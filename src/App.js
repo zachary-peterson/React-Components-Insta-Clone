@@ -23,8 +23,9 @@ import "./App.css";
 const App = () => {
   // Create a state called 'posts' to hold the list of posts, initializing to dummyData.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
-  const posts = UseData;
+  const [posts , setPosts] = useState(UseData);
 
+  
   const likePost = postId => {
     // This function is passed into nested components using props, to allow them to update application state.
     // It takes a post id as its only argument. The idea is to increase the 'likes' count of the post with the given `id`.
@@ -32,13 +33,13 @@ const App = () => {
     // The callback passed into `posts.map()` performs the following logic:
     //  - if the `id` of the post matches `postId`, return a new post object containing an increased 'likes' count.
     //  - otherwise just return the post object unchanged.
-    posts.map(post => {
-      if(postId === post.id){
-        return {...post, likes: post.likes + 1}
+    setPosts(posts.map(actPost => {
+      if(actPost.id === postId){
+        return {...actPost, likes: actPost.likes + 1}
       }else{
-        return post;
+        return {actPost};
       }
-    })
+    }))
   };
 
   return (
