@@ -12,11 +12,11 @@ const Posts = (props) => {
     <div className="posts-container-wrapper">
       {/* map through the posts here to return a Post component */}
       {
-        posts.map(actPost => {
-          return <Post 
+        posts.map(actPost => 
+          <Post 
           post={actPost} 
           likePost={likePost} />
-        })
+        )
       }
       {/* Check the implementation of Post to see what props it requires! */}
     </div>
